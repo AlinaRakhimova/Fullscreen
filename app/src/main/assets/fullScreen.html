@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=0"/>
+</head>
+<body style="background-color:#E6E6FA">
+<input type="button" value="Fullscreen" onClick="enableFullScreen()"/>
+<input type="button" value="Exit fullscreen" onClick="disableFullScreen()"/>
+<p id="my_text">Message</p>
+
+<script language="javascript">
+
+    function setMessage(msg){
+        document.getElementById("my_text").innerHTML = msg;
+    }
+
+    function enableFullScreen() {
+            document.documentElement.requestFullscreen()
+                .then(() => setMessage("Document enabled Full screen mode"))
+                .catch((err) => setMessage(err));
+
+    }
+
+    function disableFullScreen() {
+        if (document.fullscreenElement) {
+            document.exitFullscreen()
+                .then(() => setMessage("Document exited form Full screen mode"))
+                .catch((err) => setMessage(err));
+        } else {
+            setMessage("Document is not in full screen")
+        }
+    }
+</script>
+</body>
+</html>
